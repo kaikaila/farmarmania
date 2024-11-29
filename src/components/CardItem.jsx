@@ -6,7 +6,7 @@ import MarketContext from "../context/MarketContext";
 export default MarketItem;
 
 function MarketItem({ item }) {
-  const { deleteMarket, editMarket } = useContext(MarketContext);
+  const { deleteMarket, isSaved } = useContext(MarketContext);
   // const [rating, setRating] = useState(7);
   // const [text, setText] = useState("this is an example of a Market item.");
   // const handleClick = () => {

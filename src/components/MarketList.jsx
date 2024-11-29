@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import MarketItem from "./MarketItem";
+// import MarketItem from "./MarketItem";
 import MarketContext from "../context/MarketContext";
 
 function MarketList() {

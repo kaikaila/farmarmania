@@ -1,25 +1,23 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import MarketList from "./components/MarketList";
-import MarketStats from "./components/MarketStats";
 import { MarketProvider } from "./context/MarketContext";
-// import MarketForm from "./components/MarketForm";
-import AboutPage from "./pages/AboutPage";
+import * as Pages from "./pages"; // 导入 index.js 中的所有模块
 
 function App() {
-  // const { MarketProvider } = useContext(MarketContext);
-  // JSX expressions must have one parent element.
-  // if we need to return multiple elements, wrap them in one parent element
   return (
     <MarketProvider>
       <Router>
         <Header />
         <div className="container">
-          {/* 如果下方没有exact关键字，因为/about也有，所以about那页也会有主页的所有组件 */}
           <Routes>
-            <Route exact path="/" element={<MarketList />}></Route>
-
-            <Route path="/about" element={<AboutPage />} />
+            {Object.entries(Pages).map(([name, Component]) => (
+              <Route
+                key={name}
+                path={`/${name.toLowerCase()}`}
+                element={<Component />}
+              />
+            ))}
           </Routes>
         </div>
       </Router>
