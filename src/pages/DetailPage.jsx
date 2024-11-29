@@ -7,6 +7,7 @@ const DetailPage = () => {
   const listing = mockData.data.find((item) => item.listing_id === listingId); // Find the record based on listing_id
 
   if (!listing) {
+    console.log(mockData);
     return <div>Listing not found.</div>;
   }
 
