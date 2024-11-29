@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useContext } from "react";
-import { FaTimes } from "react-icons/fa";
-import MarketContext from "../context/MarketContext";
+import { MarketContext } from "../context/MarketContext";
 
 export default MarketItem;
 
@@ -24,7 +23,7 @@ function MarketItem({ item }) {
         }}
         className="close"
       >
-        <FaTimes color="purple" />
+        {/* <FaTimes color="purple" /> */}
       </button>
 
       <div className="text-display">{item.text}</div>

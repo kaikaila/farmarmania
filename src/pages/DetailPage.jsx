@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import mockData from "./testDB.json"; // Import the data from the JSON file
+import mockData from "../testDB.json"; // Import the data from the JSON file
 
 const DetailPage = () => {
   const { listingId } = useParams(); // Retrieve the dynamic parameter from the URL

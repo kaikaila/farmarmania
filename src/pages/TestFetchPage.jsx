@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import { MarketContext, MarketProvider } from "./MarketContext"; // Import the context and provider
+import { MarketContext, MarketProvider } from "../context/MarketContext"; // Import the context and provider
 import DetailPage from "./DetailPage"; // Import your DetailPage component
 
-const TestPage = () => {
+const TestFetchPage = () => {
   const { markets, loading, error, fetchMarkets } = useContext(MarketContext);
   const [selectedMarket, setSelectedMarket] = useState(null);
 
@@ -34,11 +34,11 @@ const TestPage = () => {
   return <DetailPage listingId={selectedMarket.listing_id} />;
 };
 
-// Wrap TestPage with MarketProvider to provide context
-const WrappedTestPage = () => (
+// Wrap TestFetchPage with MarketProvider to provide context
+const WrappedTestFetchPage = () => (
   <MarketProvider>
-    <TestPage />
+    <TestFetchPage />
   </MarketProvider>
 );
 
-export default WrappedTestPage;
+export default WrappedTestFetchPage;
