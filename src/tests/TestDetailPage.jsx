@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import DetailPage from "./DetailPage"; // Import your DetailPage component
+import DetailPage from "../pages/DetailPage"; // Import your DetailPage component
 import testDB from "../testDB.json"; // Import testDB.json directly
 
 const TestDetailPage = () => {

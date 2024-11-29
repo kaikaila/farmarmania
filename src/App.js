@@ -3,8 +3,8 @@ import Header from "./components/Header";
 import MarketList from "./components/MarketList";
 import { MarketProvider } from "./context/MarketContext";
 import * as Pages from "./pages"; // 导入 index.js 中的所有模块
-import WrappedTestFetchPage from "./pages/TestFetchPage";
-import TestDetailPage from "./pages/TestDetailPage";
+import WrappedTestFetchPage from "./tests/TestFetchPage";
+import TestDetailPage from "./tests/TestDetailPage";
 
 function App() {
   return (

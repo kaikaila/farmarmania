@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MarketContext, MarketProvider } from "../context/MarketContext"; // Import the context and provider
-import DetailPage from "./DetailPage"; // Import your DetailPage component
+import DetailPage from "../pages/DetailPage"; // Import your DetailPage component
 
 const TestFetchPage = () => {
   const { markets, loading, error, fetchMarkets } = useContext(MarketContext);

@@ -1,85 +1,86 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import mockData from "../testDB.json"; // Import the data from the JSON file
 
-const DetailPage = () => {
-  const { listingId } = useParams(); // Retrieve the dynamic parameter from the URL
-  const listing = mockData.data.find((item) => item.listing_id === listingId); // Find the record based on listing_id
-
+const DetailPage = ({ listing }) => {
   if (!listing) {
-    console.log(mockData);
     return <div>Listing not found.</div>;
   }
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1>{listing.listing_name}</h1>
+    <main id="detail-page">
+      <header id="detail-header">
+        <h1 className="detail-title">{listing.listing_name}</h1>
+      </header>
       {listing.listing_image && (
-        <img
-          src={listing.listing_image}
-          alt={listing.listing_name || "Listing Image"}
-          style={{ width: "100%", maxWidth: "600px", borderRadius: "10px" }}
-        />
+        <section id="image-section">
+          <img
+            className="detail-image"
+            src={listing.listing_image}
+            alt={listing.listing_name || "Listing Image"}
+          />
+        </section>
       )}
-      {listing.listing_desc && (
-        <p>
-          <strong>Description:</strong> {listing.listing_desc}
-        </p>
-      )}
-      {listing.contact_name && (
-        <p>
-          <strong>Contact Name:</strong> {listing.contact_name}
-        </p>
-      )}
-      {listing.contact_phone && (
-        <p>
-          <strong>Contact Phone:</strong> {listing.contact_phone}
-        </p>
-      )}
-      {listing.contact_email && (
-        <p>
-          <strong>Contact Email:</strong> {listing.contact_email}
-        </p>
-      )}
-      {listing.media_website && (
-        <p>
-          <strong>Website:</strong>{" "}
-          <a
-            href={listing.media_website}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Visit Website
-          </a>
-        </p>
-      )}
-      {listing.location_address && (
-        <p>
-          <strong>Address:</strong> {listing.location_address}
-        </p>
-      )}
-      {listing.location_city && (
-        <p>
-          <strong>City:</strong> {listing.location_city}
-        </p>
-      )}
-      {listing.location_state && (
-        <p>
-          <strong>State:</strong> {listing.location_state}
-        </p>
-      )}
-      {listing.distance && (
-        <p>
-          <strong>Distance:</strong> {parseFloat(listing.distance).toFixed(2)}{" "}
-          km
-        </p>
-      )}
-      {listing.updatetime && (
-        <p>
-          <strong>Last Updated:</strong> {listing.updatetime}
-        </p>
-      )}
-    </div>
+      <section id="details-section">
+        {listing.listing_desc && (
+          <p className="detail-description">
+            <strong>Description:</strong> {listing.listing_desc}
+          </p>
+        )}
+        {listing.contact_name && (
+          <p className="detail-contact-name">
+            <strong>Contact Name:</strong> {listing.contact_name}
+          </p>
+        )}
+        {listing.contact_phone && (
+          <p className="detail-contact-phone">
+            <strong>Contact Phone:</strong> {listing.contact_phone}
+          </p>
+        )}
+        {listing.contact_email && (
+          <p className="detail-contact-email">
+            <strong>Contact Email:</strong> {listing.contact_email}
+          </p>
+        )}
+        {listing.media_website && (
+          <p className="detail-website">
+            <strong>Website:</strong>{" "}
+            <a
+              id="website-link"
+              href={listing.media_website}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit Website
+            </a>
+          </p>
+        )}
+        {listing.location_address && (
+          <p className="detail-address">
+            <strong>Address:</strong> {listing.location_address}
+          </p>
+        )}
+        {listing.location_city && (
+          <p className="detail-city">
+            <strong>City:</strong> {listing.location_city}
+          </p>
+        )}
+        {listing.location_state && (
+          <p className="detail-state">
+            <strong>State:</strong> {listing.location_state}
+          </p>
+        )}
+        {listing.distance && (
+          <p className="detail-distance">
+            <strong>Distance:</strong> {parseFloat(listing.distance).toFixed(2)}{" "}
+            km
+          </p>
+        )}
+        {listing.updatetime && (
+          <p className="detail-updatetime">
+            <strong>Last Updated:</strong> {listing.updatetime}
+          </p>
+        )}
+      </section>
+    </main>
   );
 };
 
