@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import CardItem from "./CardItem"; // Import the CardItem component
 import testDB from "../data/testDB.json"; // Import mock data from testDB.json
+import { MarketContext } from "../context/MarketContext";
 const MarketList = () => {
+  const { savedList, handleSave, handleRemove } = useContext(MarketContext);
   // const [savedList, setSavedList] = useState([]); // State to track saved markets
 
   // // Handle saving a market
