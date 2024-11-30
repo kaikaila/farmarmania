@@ -6,6 +6,7 @@ import * as Pages from "./pages"; // 导入 index.js 中的所有模块
 import WrappedTestFetchPage from "./tests/TestFetchPage";
 import TestDetailPage from "./tests/TestDetailPage";
 import TestCardItem from "./tests/TestCardItem";
+import DetailPage from "./pages/DetailPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               />
             ))}
             <Route path="/testFetch" element={<WrappedTestFetchPage />} />
+            <Route path="/details/:listing_id" element={<DetailPage />} />
             {/* on testDB.json */}
             <Route path="/testDetailPage" element={<TestDetailPage />} />
             <Route path="/test-card-item" element={<TestCardItem />} />

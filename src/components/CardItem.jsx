@@ -1,15 +1,11 @@
 import React from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { MarketContext } from "../context/MarketContext";
 
-const CardItem = ({
-  market,
-  onSave, // Callback function to handle saving the market
-}) => {
+const CardItem = ({ market }) => {
+  const { savedList, handleSave, handleRemove } = useContext(MarketContext);
   const navigate = useNavigate(); // Hook to navigate to the detail page
-
-  const handleSave = () => {
-    onSave(market); // Call the parent-provided save function with the market
-  };
 
   const handleDetail = () => {
     navigate(`/details/${market.listing_id}`); // Navigate to the detail page

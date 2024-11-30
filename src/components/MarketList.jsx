@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import CardItem from "./CardItem"; // Import the CardItem component
 import testDB from "../data/testDB.json"; // Import mock data from testDB.json
-
 const MarketList = () => {
-  const [savedList, setSavedList] = useState([]); // State to track saved markets
+  // const [savedList, setSavedList] = useState([]); // State to track saved markets
 
-  // Handle saving a market
-  const handleSave = (market) => {
-    // Add the market to the saved list only if it's not already there
-    setSavedList((prev) => {
-      if (!prev.some((item) => item.listing_id === market.listing_id)) {
-        return [...prev, market];
-      }
-      return prev;
-    });
-  };
+  // // Handle saving a market
+  // const handleSave = (market) => {
+  //   // Add the market to the saved list only if it's not already there
+  //   setSavedList((prev) => {
+  //     if (!prev.some((item) => item.listing_id === market.listing_id)) {
+  //       return [...prev, market];
+  //     }
+  //     return prev;
+  //   });
+  // };
 
   return (
     <div className="market-list">

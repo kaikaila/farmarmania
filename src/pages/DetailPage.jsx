@@ -1,6 +1,11 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import testDB from "../data/testDB.json"; // Import mock data from testDB.json
 
-const DetailPage = ({ listing }) => {
+const DetailPage = () => {
+  const { listing_id } = useParams(); // Extract listing_id from the URL
+  const listing = testDB.data.find((item) => item.listing_id === listing_id); // Find the market by ID
+
   if (!listing) {
     return <div>Listing not found.</div>;
   }
