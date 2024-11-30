@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Assuming you are using React Router
+import { useContext } from "react";
+import { MarketContext } from "../context/MarketContext";
 
-const Header = ({ logoSrc, savedListCount }) => {
+const Header = ({ logoSrc }) => {
+  const { savedList } = useContext(MarketContext);
+
   return (
     <header id="main-header" className="header-container">
       {/* Logo and Website Name */}
@@ -28,7 +32,7 @@ const Header = ({ logoSrc, savedListCount }) => {
             <Link id="savedlist-link" className="nav-link" to="/savedlist">
               Saved List{" "}
               <span id="savedlist-count" className="savedlist-count">
-                ({savedListCount})
+                ({savedList.length})
               </span>
             </Link>
           </li>
