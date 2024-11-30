@@ -8,7 +8,7 @@ const TestFetchPage = () => {
 
   // Fetch the markets when the component loads
   useEffect(() => {
-    fetchMarkets(-84, 42, 30); // Example coordinates for testing
+    fetchMarkets(-122.27, 37.85, 30); // Example coordinates for testing
   }, [fetchMarkets]);
 
   useEffect(() => {
