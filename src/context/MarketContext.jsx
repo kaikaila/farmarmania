@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
-import { SavedList } from "../pages";
 
 // Create the context
 export const MarketContext = createContext();
@@ -12,7 +11,7 @@ export const MarketProvider = ({ children }) => {
   const [error, setError] = useState(null); // State for error handling
 
   const API_KEY = "Xcb6WnCyWD"; // API Key
-  const BASE_URL = "https://www.usdalocalfoodportal.com/api/farmersmarket/";
+  const BASE_URL = "http://localhost:3001/api/farmersmarket";
 
   /**
    * Fetch markets based on search criteria.
@@ -31,10 +30,6 @@ export const MarketProvider = ({ children }) => {
           x,
           y,
           radius,
-        },
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
         },
       });
 
