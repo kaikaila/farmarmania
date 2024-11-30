@@ -1,14 +1,29 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
+import { IoHeart, IoHeartOutline } from "react-icons/io5"; // Import heart icons
+import { MarketContext } from "../context/MarketContext"; // Import MarketContext
 import { useNavigate } from "react-router-dom";
-import { MarketContext } from "../context/MarketContext";
 
 const CardItem = ({ market }) => {
-  const { savedList, handleSave, handleRemove } = useContext(MarketContext);
-  const navigate = useNavigate(); // Hook to navigate to the detail page
+  const { savedList, handleSave, handleRemove } = useContext(MarketContext); // Use context
+  const navigate = useNavigate();
 
+  // Check if the market is in the saved list
+  const isSaved = savedList.some(
+    (item) => item.listing_id === market.listing_id
+  );
+
+  // Toggle save/remove
+  const handleToggleSave = () => {
+    if (isSaved) {
+      handleRemove(market);
+    } else {
+      handleSave(market);
+    }
+  };
+
+  // Navigate to detail page
   const handleDetail = () => {
-    navigate(`/details/${market.listing_id}`); // Navigate to the detail page
+    navigate(`/details/${market.listing_id}`);
   };
 
   return (
@@ -19,14 +34,12 @@ const CardItem = ({ market }) => {
 
         {/* Market Location */}
         <p className="card-location">
-          <strong>Location:</strong>{" "}
-          {market.location_address || "Address not provided"}
+          <strong>Location:</strong> {market.location_address || "Not provided"}
         </p>
 
         {/* Products */}
         <p className="card-products">
-          <strong>Products:</strong>{" "}
-          {market.listing_desc || "No product information"}
+          <strong>Products:</strong> {market.listing_desc || "Not available"}
         </p>
 
         {/* Year-round Status */}
@@ -40,10 +53,15 @@ const CardItem = ({ market }) => {
       <div className="card-actions">
         <button
           className="btn btn-save"
-          onClick={handleSave}
-          aria-label="Save Market"
+          onClick={handleToggleSave}
+          aria-label={isSaved ? "Unsave Market" : "Save Market"}
         >
-          ❤️ Save
+          {isSaved ? (
+            <IoHeart size={20} color="red" />
+          ) : (
+            <IoHeartOutline size={20} />
+          )}
+          {isSaved ? " Saved" : " Save"}
         </button>
         <button
           className="btn btn-detail"
