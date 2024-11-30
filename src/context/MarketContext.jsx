@@ -9,17 +9,14 @@ export const MarketProvider = ({ children }) => {
   const [markets, setMarkets] = useState([]); // State to hold the list of markets
   const [loading, setLoading] = useState(false); // State for loading status
   const [error, setError] = useState(null); // State for error handling
+  const [savedList, setSavedList] = useState(() => {
+    // Initialize savedList from local storage
+    const savedData = localStorage.getItem("savedList");
+    return savedData ? JSON.parse(savedData) : [];
+  });
 
   const API_KEY = "Xcb6WnCyWD"; // API Key
   const BASE_URL = "http://localhost:3001/api/farmersmarket";
-
-  // Load savedList from local storage when the app starts
-  useEffect(() => {
-    const savedData = localStorage.getItem("savedList");
-    if (savedData) {
-      setSavedList(JSON.parse(savedData)); // Parse and load the saved list
-    }
-  }, []);
 
   // Save savedList to local storage whenever it changes
   useEffect(() => {
@@ -54,7 +51,7 @@ export const MarketProvider = ({ children }) => {
     }
   };
 
-  const [savedList, setSavedList] = useState([]); // State for saved markets
+  // const [savedList, setSavedList] = useState([]); // State for saved markets
 
   // Handle saving a market
   const handleSave = (market) => {
