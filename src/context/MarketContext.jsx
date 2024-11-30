@@ -13,6 +13,19 @@ export const MarketProvider = ({ children }) => {
   const API_KEY = "Xcb6WnCyWD"; // API Key
   const BASE_URL = "http://localhost:3001/api/farmersmarket";
 
+  // Load savedList from local storage when the app starts
+  useEffect(() => {
+    const savedData = localStorage.getItem("savedList");
+    if (savedData) {
+      setSavedList(JSON.parse(savedData)); // Parse and load the saved list
+    }
+  }, []);
+
+  // Save savedList to local storage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("savedList", JSON.stringify(savedList));
+  }, [savedList]);
+
   /**
    * Fetch markets based on search criteria.
    * @param {number} x - Longitude
