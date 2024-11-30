@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DetailPage from "../pages/DetailPage"; // Import your DetailPage component
-import testDB from "../testDB.json"; // Import testDB.json directly
+import testDB from "../data/testDB.json"; // Import testDB.json directly
 
 const TestDetailPage = () => {
   const [listingData, setListingData] = useState(null);

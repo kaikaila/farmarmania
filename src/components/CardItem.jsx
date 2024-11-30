@@ -1,33 +1,64 @@
 import React from "react";
-import { useState, useContext } from "react";
-import { MarketContext } from "../context/MarketContext";
+import { useNavigate } from "react-router-dom";
 
-export default MarketItem;
+const CardItem = ({
+  market,
+  onSave, // Callback function to handle saving the market
+}) => {
+  const navigate = useNavigate(); // Hook to navigate to the detail page
 
-function MarketItem({ item }) {
-  const { deleteMarket, isSaved } = useContext(MarketContext);
-  // const [rating, setRating] = useState(7);
-  // const [text, setText] = useState("this is an example of a Market item.");
-  // const handleClick = () => {
-  //   setRating((prev) => {
-  //     return prev + 1;
-  //   });
-  //   };
+  const handleSave = () => {
+    onSave(market); // Call the parent-provided save function with the market
+  };
+
+  const handleDetail = () => {
+    navigate(`/details/${market.listing_id}`); // Navigate to the detail page
+  };
 
   return (
-    <div className="card">
-      <div className="num-display">{item.rating}</div>
-      <button
-        onClick={() => {
-          deleteMarket(item.id);
-        }}
-        className="close"
-      >
-        {/* <FaTimes color="purple" /> */}
-      </button>
+    <div className="card-item">
+      <div className="card-content">
+        {/* Market Name */}
+        <h2 className="card-title">{market.listing_name}</h2>
 
-      <div className="text-display">{item.text}</div>
-      {/* <button onClick={handleClick}>Click</button> */}
+        {/* Market Location */}
+        <p className="card-location">
+          <strong>Location:</strong>{" "}
+          {market.location_address || "Address not provided"}
+        </p>
+
+        {/* Products */}
+        <p className="card-products">
+          <strong>Products:</strong>{" "}
+          {market.listing_desc || "No product information"}
+        </p>
+
+        {/* Year-round Status */}
+        <p className="card-year-round">
+          <strong>Open Year-Round:</strong>{" "}
+          {market.open_year_round ? "Yes" : "No"}
+        </p>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="card-actions">
+        <button
+          className="btn btn-save"
+          onClick={handleSave}
+          aria-label="Save Market"
+        >
+          ❤️ Save
+        </button>
+        <button
+          className="btn btn-detail"
+          onClick={handleDetail}
+          aria-label="View Details"
+        >
+          Detail
+        </button>
+      </div>
     </div>
   );
-}
+};
+
+export default CardItem;

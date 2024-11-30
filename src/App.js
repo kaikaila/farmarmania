@@ -5,6 +5,7 @@ import { MarketProvider } from "./context/MarketContext";
 import * as Pages from "./pages"; // 导入 index.js 中的所有模块
 import WrappedTestFetchPage from "./tests/TestFetchPage";
 import TestDetailPage from "./tests/TestDetailPage";
+import TestCardItem from "./tests/TestCardItem";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
             <Route path="/testFetch" element={<WrappedTestFetchPage />} />
             {/* on testDB.json */}
             <Route path="/testDetailPage" element={<TestDetailPage />} />
+            <Route path="/test-card-item" element={<TestCardItem />} />
+            <Route path="/testMarketList" element={<MarketList />} />
           </Routes>
         </div>
       </Router>

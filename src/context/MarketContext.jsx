@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { SavedList } from "../pages";
 
 // Create the context
 export const MarketContext = createContext();
@@ -45,12 +46,34 @@ export const MarketProvider = ({ children }) => {
     }
   };
 
+  const [savedList, setSavedList] = useState([]); // State for saved markets
+
+  // Handle saving a market
+  const handleSave = (market) => {
+    setSavedList((prev) => {
+      if (!prev.some((item) => item.listing_id === market.listing_id)) {
+        return [...prev, market];
+      }
+      return prev;
+    });
+  };
+
+  // Handle removing a market from the saved list
+  const handleRemove = (market) => {
+    setSavedList((prev) =>
+      prev.filter((item) => item.listing_id !== market.listing_id)
+    );
+  };
+
   return (
     <MarketContext.Provider
       value={{
         markets,
         loading,
         error,
+        savedList,
+        handleSave,
+        handleRemove,
         fetchMarkets,
       }}
     >
